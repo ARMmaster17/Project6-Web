@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "6"
+  - "4"
+deploy:
+  provider: heroku
+  api_key: "9951e24c-b489-48fe-8a60-b325e8d850dd"
+  app: project6
