@@ -6,9 +6,18 @@ router.post('/me/location', function(req, res, next) {
     // TODO: Update the current users location.
 });
 
+router.post('/me/add-friend', function(req, res, next) {
+    // TODO: CHeck to see if token is valid.
+    // TODO: Add a friend to the current users friend list.
+});
+
+router.get('/me/near-me', function(req, res, next) {
+    // TODO: Check to see if token is valid.
+    // TODO: Return a list of users near the specified GPS coordinates.
+});
+
 router.get('/me', function(req, res, next) {
     // TODO: Check to see if token is valid.
-    // TODO: Respond with JSON data of current user.
     var query = req.Models.User.findOne({ 'userFriendlyName': 'test' });
     query.select('userFriendlyName userFriendList');
     query.exec(function (err, user) {
@@ -19,18 +28,16 @@ router.get('/me', function(req, res, next) {
 
 router.post('/me', function(req, res, next) {
     // TODO: Check to see if token is valid.
-    // TODO: replace current user object with new specified settings.
+    // TODO: Replace 'test' with current users username.
     var query = req.Models.User.findOne({ 'userFriendlyName': 'test' });
     query.select('userFriendlyName userFriendList');
     query.exec(function (err, user) {
         if (err) res.send("DB_ERROR");
-        else res.send(user.toJSON);
+        else {
+            // TODO: Fill in new fields in user object.
+            user.save();
+        }
     });
-});
-
-router.get('/near-me', function(req, res, next) {
-    // TODO: Check to see if token is valid.
-    // TODO: Return a list of users near the specified GPS coordinates.
 });
 
 module.exports = router;
